@@ -7,6 +7,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom"
+import Button from 'react-bootstrap/Button'
 
 
 const Show = () => {
@@ -27,8 +28,9 @@ const Show = () => {
     <>
       <h3>Requested topic ID: {id}</h3>
       <pre>
-        {JSON.stringify(user,null,2)}
+        {JSON.stringify(user, null, 2)}
       </pre>
+      <Button href={'http://localhost:3001/users'} variant="warning">Back</Button>
     </>
   )
 }
@@ -50,11 +52,11 @@ const List = () => {
   return (
     <>
       <h3>Users list</h3>
-      <table>
+      <table responsive="sm">
         {users.map(({ name, id }) => (
           <tr key={id} >
             <td>{name}</td>
-            <td><Link to={'users/' + id}>Show</Link></td>
+            <td><Button href={'users/' + id}>Show</Button></td>
           </tr>
         ))}
       </table>
